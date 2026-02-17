@@ -6,7 +6,7 @@ export const environment = {
           publicKey: 'mjn3BGDBfz99RHULx' // Replace with your EmailJS public key
      },
      whatsapp: {
-          phoneNumber: '972546683148' // Replace with your WhatsApp business number (with country code, no + or spaces)
+          phoneNumber: '917025630373' // Replace with your WhatsApp business number (with country code, no + or spaces)
      },
      contact: {
           email: 'theplanningparadise009@gmail.com'
