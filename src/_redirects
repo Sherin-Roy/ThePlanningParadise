@@ -1,0 +1,6 @@
+/*
+  Netlify Redirects for Angular Single Page Application (SPA)
+  This ensures that when a user refreshes the page on a sub-route (e.g., /about),
+  Netlify serves the index.html and lets Angular handle the routing.
+*/
+/*  /index.html  200
