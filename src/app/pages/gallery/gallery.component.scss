@@ -221,7 +221,7 @@
           }
      }
 
-     @media (max-width: 576px) {
+     @include mobile {
           flex-direction: column;
           text-align: center;
           padding: 15px;
@@ -564,16 +564,6 @@
 }
 
 // Animations
-@keyframes fadeIn {
-     from {
-          opacity: 0;
-     }
-
-     to {
-          opacity: 1;
-     }
-}
-
 @keyframes slideUp {
      from {
           transform: translateY(50px);
