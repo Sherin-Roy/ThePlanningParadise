@@ -141,10 +141,11 @@
      .attribution-chip {
           display: inline-flex;
           align-items: center;
+          white-space: nowrap;
           gap: 8px;
           background: rgba($white, 0.05);
           backdrop-filter: blur(5px);
-          padding: 6px 16px;
+          padding: 8px 18px;
           border-radius: 50px;
           color: rgba($white, 0.7);
           font-size: 0.85rem;
@@ -153,10 +154,20 @@
           border: 1px solid rgba($white, 0.1);
           transition: all 0.3s ease;
 
+          @include mobile {
+               font-size: 0.75rem;
+               padding: 6px 14px;
+               gap: 6px;
+          }
+
           .heart-icon {
                color: #ff4d6d;
                font-size: 0.75rem;
                animation: heartbeat 1.5s ease-in-out infinite;
+
+               @include mobile {
+                    font-size: 0.65rem;
+               }
           }
 
           span {
