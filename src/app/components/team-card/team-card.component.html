@@ -1,0 +1,13 @@
+<div class="card-container">
+     <div class="image-wrapper">
+          <app-lazy-image [src]="member.image"
+                          [alt]="member.name"
+                          [transparent]="true">
+          </app-lazy-image>
+          <div class="overlay"></div>
+     </div>
+     <div class="content">
+          <h3 class="name">{{ member.name }}</h3>
+          <!-- <p class="description">{{ member.description }}</p> -->
+     </div>
+</div>

@@ -1,0 +1,40 @@
+<section class="hero"
+         #heroBackground
+         [ngClass]="{'home-hero': isHome, 'loaded': !isLoading || useVanta, 'error': hasError}"
+         [style.background-image]="!useVanta && !isLoading && !hasError ? 'url(' + backgroundImage + ')' : 'none'">
+
+     <div *ngIf="isLoading && !useVanta && !hasError"
+          class="skeleton-loader"></div>
+
+     <img *ngIf="!useVanta"
+          [src]="backgroundImage"
+          (load)="onImageLoad()"
+          (error)="onImageError()"
+          style="display: none;"
+          alt="">
+
+     <div *ngIf="hasError && !useVanta"
+          class="error-backdrop"></div>
+
+     <div class="overlay"></div>
+     <div class="content container">
+          <h1 class="animate-fade-up">{{ title }}</h1>
+          <p class="animate-fade-up delay-200"
+             *ngIf="subtitle">{{ subtitle }}</p>
+
+          <div class="buttons"
+               *ngIf="showButtons">
+               <a routerLink="/portfolio"
+                  class="btn btn-primary">View Projects</a>
+               <a routerLink="/contact"
+                  class="btn btn-outline">Plan Your Event</a>
+          </div>
+     </div>
+
+     <div class="scroll-indicator"
+          *ngIf="isHome">
+          <div class="mouse">
+               <div class="wheel"></div>
+          </div>
+     </div>
+</section>

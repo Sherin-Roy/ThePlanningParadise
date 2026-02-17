@@ -1,0 +1,28 @@
+<div class="project-card">
+     <div class="image-wrapper">
+          <app-lazy-image [src]="project.image"
+                          [alt]="project.title">
+          </app-lazy-image>
+     </div>
+
+     <div class="content">
+          <div class="header">
+               <h3 class="title"
+                   [title]="project.title">{{ project.title }}</h3>
+
+               <div class="info-row">
+                    <span class="category">{{ project.category }}</span>
+                    <span class="location">
+                         <i class="bi bi-geo-alt"></i>
+                         <span class="loc-text">{{ project.location }}</span>
+                    </span>
+               </div>
+          </div>
+
+          <div class="actions">
+               <button class="btn-main"
+                       (click)="viewDetails.emit()">View Details</button>
+               <button class="btn-icon"><i class="bi bi-heart"></i></button>
+          </div>
+     </div>
+</div>

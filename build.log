@@ -1,0 +1,9 @@
+﻿Initial chunk files   | Names         |   Raw size | Estimated transfer size
+main-WZ5K5VNK.js      | main          | 1015.43 kB |               224.85 kB
+polyfills-FFHMD2TL.js | polyfills     |   33.71 kB |                11.02 kB
+styles-HRZ6PP3F.css   | styles        |    2.40 kB |               756 bytes
+
+                      | Initial total |    1.03 MB |               236.61 kB
+
+Application bundle generation failed. [11.617 seconds]
+

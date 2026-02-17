@@ -1,0 +1,32 @@
+<section class="team-hero">
+     <div class="hero-content text-center">
+          <h1 class="hero-title">Meet the visionaries behind<br> <span class="highlight">The Planning Paradise—</span></h1>
+          <p class="hero-subtitle">Where excellence is planned.</p>
+     </div>
+</section>
+
+<section class="team-carousel-section">
+     <div class="carousel-container"
+          (mouseenter)="onMouseEnter()"
+          (mouseleave)="onMouseLeave()">
+
+          <!-- Gradient overlays for fade effect -->
+          <div class="fade-overlay left"></div>
+          <div class="fade-overlay right"></div>
+
+          <div class="carousel-track"
+               #carouselTrack>
+               <ng-container *ngFor="let member of displayTeam">
+                    <div class="carousel-item">
+                         <app-team-card [member]="member"></app-team-card>
+                    </div>
+               </ng-container>
+          </div>
+     </div>
+
+     <!-- Progress Bar / Decor -->
+     <div class="progress-bar-container">
+          <div class="progress-bar"
+               [style.width.%]="progressPercent"></div>
+     </div>
+</section>

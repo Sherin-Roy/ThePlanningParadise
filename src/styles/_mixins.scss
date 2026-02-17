@@ -1,0 +1,81 @@
+@import 'variables';
+
+// Responsive Breakpoints
+@mixin mobile {
+     @media (max-width: #{$mobile}) {
+          @content;
+     }
+}
+
+@mixin tablet {
+     @media (max-width: #{$tablet}) {
+          @content;
+     }
+}
+
+@mixin desktop {
+     @media (min-width: #{$desktop}) {
+          @content;
+     }
+}
+
+// Flexbox
+@mixin flex-center {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+@mixin flex-between {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+}
+
+@mixin flex-column {
+     display: flex;
+     flex-direction: column;
+}
+
+// Typography
+@mixin heading-lg {
+     font-family: $font-heading;
+     font-size: 3.5rem;
+     font-weight: 700;
+     line-height: 1.2;
+
+     @include tablet {
+          font-size: 2.5rem;
+     }
+}
+
+@mixin heading-md {
+     font-family: $font-heading;
+     font-size: 2.5rem;
+     font-weight: 600;
+     line-height: 1.3;
+
+     @include tablet {
+          font-size: 2rem;
+     }
+}
+
+// Container
+@mixin container {
+     width: 100%;
+     max-width: 1280px;
+     margin: 0 auto;
+     padding: 0 $spacing-sm;
+
+     @include desktop {
+          padding: 0 $spacing-md;
+     }
+}
+
+// Glassmorphism
+@mixin glass {
+     background: rgba(255, 255, 255, 0.1);
+     backdrop-filter: blur(10px);
+     -webkit-backdrop-filter: blur(10px);
+     border: 1px solid rgba(255, 255, 255, 0.18);
+}

@@ -1,0 +1,213 @@
+<section class="contact-section">
+     <div class="contact-container">
+          <!-- Left Side: Heading & Info -->
+          <div class="contact-left">
+               <p class="contact-label">Contact Us</p>
+               <h1 class="contact-title">Let's Get In Touch.</h1>
+               <p class="contact-description">
+                    Ready to create unforgettable moments? Share your event details with us, and our team will craft a personalized experience just for you.
+               </p>
+               <p class="contact-cta">
+                    Or just reach out manually to
+                    <a [href]="'mailto:' + env.contact.email"
+                       class="email-link">{{ env.contact.email }}</a>
+               </p>
+
+               <!-- Contact Info Cards -->
+               <div class="info-cards">
+                    <a [href]="'mailto:' + env.contact.email + '?subject=Event%20Inquiry%20-%20The%20Planning%20Paradise&body=Hello%20Team%2C%0A%0AI%20am%20interested%20in%20planning%20an%20event%20with%20The%20Planning%20Paradise.%0A%0AEvent%20Details%3A%0A-%20Event%20Type%3A%20%5BPlease%20specify%5D%0A-%20Event%20Date%3A%20%5BPlease%20specify%5D%0A-%20Guest%20Count%3A%20%5BPlease%20specify%5D%0A-%20Budget%20Range%3A%20%5BPlease%20specify%5D%0A-%20Venue%3A%20%5BPlease%20specify%5D%0A%0AAdditional%20Information%3A%0A%5BPlease%20share%20any%20specific%20requirements%20or%20questions%5D%0A%0AThank%20you%21'"
+                       class="info-card">
+                         <i class="bi bi-envelope-fill"></i>
+                         <div>
+                              <h4>Email Us</h4>
+                              <p>{{ env.contact.email }}</p>
+                         </div>
+                    </a>
+                    <a [href]="'https://wa.me/' + env.whatsapp.phoneNumber + '?text=Hello%20The%20Planning%20Paradise!%0A%0AI%20am%20interested%20in%20planning%20an%20event%20with%20you.%0A%0A*Event%20Details:*%0A-%20Event%20Type:%20[Please%20specify]%0A-%20Event%20Date:%20[Please%20specify]%0A-%20Guest%20Count:%20[Please%20specify]%0A-%20Budget%20Range:%20[Please%20specify]%0A-%20Venue:%20[Please%20specify]%0A%0A*Additional%20Information:*%0A[Please%20share%20any%20specific%20requirements]%0A%0AThank%20you!'"
+                       target="_blank"
+                       class="info-card">
+                         <i class="bi bi-whatsapp"></i>
+                         <div>
+                              <h4>WhatsApp</h4>
+                              <p>+{{ env.whatsapp.phoneNumber }}</p>
+                         </div>
+                    </a>
+               </div>
+          </div>
+
+          <!-- Vertical Separator -->
+          <div class="vertical-separator"></div>
+
+          <!-- Right Side: Form -->
+          <div class="contact-right">
+               <form [formGroup]="contactForm"
+                     (ngSubmit)="onSubmit()"
+                     class="contact-form">
+
+                    <div class="form-grid">
+                         <!-- Name -->
+                         <div class="form-group">
+                              <label for="name">Full Name <span class="required">*</span></label>
+                              <div class="input-wrapper">
+                                   <i class="bi bi-person"></i>
+                                   <input type="text"
+                                          id="name"
+                                          formControlName="name"
+                                          placeholder="Enter your full name..."
+                                          [class.invalid]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+                              </div>
+                         </div>
+
+                         <!-- Event Date -->
+                         <div class="form-group">
+                              <label for="eventDate">Event Date <span class="required">*</span></label>
+                              <div class="input-wrapper">
+                                   <i class="bi bi-calendar3"></i>
+                                   <input type="date"
+                                          id="eventDate"
+                                          formControlName="eventDate"
+                                          [class.invalid]="contactForm.get('eventDate')?.invalid && contactForm.get('eventDate')?.touched">
+                              </div>
+                         </div>
+
+                         <!-- Phone -->
+                         <div class="form-group">
+                              <label for="phone">Phone Number <span class="required">*</span></label>
+                              <div class="input-wrapper">
+                                   <i class="bi bi-telephone"></i>
+                                   <input type="tel"
+                                          id="phone"
+                                          formControlName="phone"
+                                          placeholder="Enter your phone number..."
+                                          [class.invalid]="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched">
+                              </div>
+                         </div>
+
+                         <!-- Email -->
+                         <div class="form-group">
+                              <label for="email">Email Address <span class="optional">(Optional)</span></label>
+                              <div class="input-wrapper">
+                                   <i class="bi bi-envelope"></i>
+                                   <input type="email"
+                                          id="email"
+                                          formControlName="email"
+                                          placeholder="Enter your email address..."
+                                          [class.invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                              </div>
+                         </div>
+
+                         <!-- Event Type -->
+                         <div class="form-group">
+                              <label for="eventType">Event Type <span class="optional">(Optional)</span></label>
+                              <div class="input-wrapper">
+                                   <i class="bi bi-calendar-event"></i>
+                                   <select id="eventType"
+                                           formControlName="eventType">
+                                        <option value=""
+                                                disabled
+                                                selected>Select event type...</option>
+                                        <option value="Wedding">Wedding</option>
+                                        <option value="Corporate Event">Corporate Event</option>
+                                        <option value="Birthday Party">Birthday Party</option>
+                                        <option value="Anniversary">Anniversary</option>
+                                        <option value="Other">Other</option>
+                                   </select>
+                              </div>
+                         </div>
+
+
+                         <!-- Event Venue -->
+                         <div class="form-group">
+                              <label for="eventVenue">Event Venue <span class="optional">(Optional)</span></label>
+                              <div class="input-wrapper">
+                                   <i class="bi bi-geo-alt"></i>
+                                   <input type="text"
+                                          id="eventVenue"
+                                          formControlName="eventVenue"
+                                          placeholder="Venue location...">
+                              </div>
+                         </div>
+
+                         <!-- Guest Count -->
+                         <div class="form-group">
+                              <label for="guestCount">Guest Count <span class="optional">(Optional)</span></label>
+                              <div class="input-wrapper">
+                                   <i class="bi bi-people"></i>
+                                   <input type="number"
+                                          id="guestCount"
+                                          formControlName="guestCount"
+                                          placeholder="Approx. guests...">
+                              </div>
+                         </div>
+
+                         <!-- Budget Range -->
+                         <div class="form-group">
+                              <label for="budgetRange">Budget Range <span class="optional">(Optional)</span></label>
+                              <div class="input-wrapper">
+                                   <i class="bi bi-currency-rupee"></i>
+                                   <select id="budgetRange"
+                                           formControlName="budgetRange">
+                                        <option value=""
+                                                disabled
+                                                selected>Select budget...</option>
+                                        <option value="Under ₹50,000">Under ₹50,000</option>
+                                        <option value="₹50,000 - ₹1,00,000">₹50,000 - ₹1,00,000</option>
+                                        <option value="₹1,00,000 - ₹3,00,000">₹1,00,000 - ₹3,00,000</option>
+                                        <option value="₹3,00,000 - ₹5,00,000">₹3,00,000 - ₹5,00,000</option>
+                                        <option value="Above ₹5,00,000">Above ₹5,00,000</option>
+                                   </select>
+                              </div>
+                         </div>
+                    </div>
+
+                    <!-- Services Needed (Full Width) -->
+                    <div class="form-group full-width">
+                         <label>Services Needed <span class="optional">(Optional)</span></label>
+                         <div class="checkbox-group"
+                              formGroupName="services">
+                              <label *ngFor="let service of services"
+                                     class="checkbox-label">
+                                   <input type="checkbox"
+                                          [formControlName]="service.id">
+                                   <i [class]="service.icon"></i>
+                                   <span>{{ service.label }}</span>
+                              </label>
+                         </div>
+                    </div>
+
+                    <!-- Message (Full Width) -->
+                    <div class="form-group full-width">
+                         <label for="message">Message <span class="optional">(Optional)</span></label>
+                         <div class="input-wrapper">
+                              <textarea id="message"
+                                        formControlName="message"
+                                        rows="4"
+                                        placeholder="Enter your main text here..."></textarea>
+                              <span class="char-count">{{ contactForm.get('message')?.value?.length || 0 }}/500</span>
+                         </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                            class="submit-btn full-width"
+                            [disabled]="contactForm.invalid || isSubmitting">
+                         <span *ngIf="!isSubmitting">Submit Form</span>
+                         <span *ngIf="isSubmitting">Sending...</span>
+                         <i class="bi bi-arrow-right"></i>
+                    </button>
+
+                    <!-- Status Messages -->
+                    <div *ngIf="submitStatus === 'success'"
+                         class="alert alert-success full-width">
+                         <i class="bi bi-check-circle-fill"></i>
+                         Message sent successfully! We'll get back to you soon.
+                    </div>
+                    <div *ngIf="submitStatus === 'error'"
+                         class="alert alert-error full-width">
+                         <i class="bi bi-exclamation-circle-fill"></i>
+                         Something went wrong. Please try again or contact us via WhatsApp.
+                    </div>
+               </form>
+          </div>
+     </div>
+</section>

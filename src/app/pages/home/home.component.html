@@ -1,0 +1,204 @@
+<app-hero title="We Design Your Dreams"
+          subtitle="Bringing People Together Through Celebration & Culture"
+          backgroundImage="assets/images/hero/home-hero.jpg"
+          [showButtons]="true"
+          [isHome]="true"
+          [useVanta]="true">
+</app-hero>
+
+<!-- Services Section -->
+<section class="section-padding services-section">
+     <div class="container">
+          <div class="section-header text-center">
+               <h2 class="title-underline">Our Services</h2>
+               <p class="service-subtitle">We specialize in creating unforgettable experiences</p>
+          </div>
+
+          <div class="services-wrapper">
+               <div class="services-track">
+                    <div class="service-card hover-lift"
+                         *ngFor="let service of services">
+                         <div class="icon-wrapper">
+                              <i class="bi"
+                                 [ngClass]="service.icon"></i>
+                         </div>
+                         <h3>{{ service.title }}</h3>
+                         <p>{{ service.desc }}</p>
+                    </div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="service-card hover-lift"
+                         *ngFor="let service of services">
+                         <div class="icon-wrapper">
+                              <i class="bi"
+                                 [ngClass]="service.icon"></i>
+                         </div>
+                         <h3>{{ service.title }}</h3>
+                         <p>{{ service.desc }}</p>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="section-padding bg-light">
+     <div class="container">
+          <div class="section-header text-center">
+               <h2 class="title-underline">Featured Projects</h2>
+               <p>A glimpse into the magical moments we've created.</p>
+          </div>
+
+          <div class="projects-wrapper">
+               <div class="projects-track">
+                    <app-project-card *ngFor="let project of featuredProjects"
+                                      [project]="project"
+                                      (viewDetails)="openModal(project)"></app-project-card>
+                    <!-- Duplicate for seamless loop -->
+                    <app-project-card *ngFor="let project of featuredProjects"
+                                      [project]="project"
+                                      (viewDetails)="openModal(project)"></app-project-card>
+               </div>
+          </div>
+
+          <div class="text-center mt-5">
+               <a routerLink="/portfolio"
+                  class="btn btn-outline">View All Projects</a>
+          </div>
+     </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section-padding why-choose-us">
+     <div class="container">
+          <div class="content">
+               <h2>Why Choose The Planning Paradise?</h2>
+
+               <!-- Statistics -->
+               <div class="statistics-grid">
+                    <div class="stat-card"
+                         *ngFor="let stat of statistics">
+                         <i class="bi"
+                            [ngClass]="stat.icon"
+                            *ngIf="stat.icon"></i>
+                         <h3 class="stat-value">{{ stat.value }}</h3>
+                         <p class="stat-label">{{ stat.label }}</p>
+                    </div>
+               </div>
+
+               <!-- Features -->
+               <div class="features-list">
+                    <div class="feature">
+                         <span class="number">01</span>
+                         <h4>Creative Vision</h4>
+                         <p>We bring fresh, innovative ideas to every event.</p>
+                    </div>
+                    <div class="feature">
+                         <span class="number">02</span>
+                         <h4>Flawless Execution</h4>
+                         <p>Meticulous attention to detail ensures zero stress.</p>
+                    </div>
+                    <div class="feature">
+                         <span class="number">03</span>
+                         <h4>Personalized approach</h4>
+                         <p>Your event should be as unique as you are.</p>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section text-center">
+     <div class="container">
+          <h2>Ready to Plan Your Next Event?</h2>
+          <p>Let's make it extraordinary together.</p>
+          <a routerLink="/contact"
+             class="btn btn-primary">Get In Touch</a>
+     </div>
+</section>
+
+<!-- Project Details Modal -->
+<div class="modal-overlay"
+     *ngIf="selectedProject"
+     (click)="closeModal()">
+     <div class="modal-content"
+          (click)="$event.stopPropagation()">
+          <button class="close-modal-btn"
+                  (click)="closeModal()">
+               <i class="bi bi-x-lg"></i>
+          </button>
+
+          <div class="modal-body-grid">
+               <!-- Left Side: Carousel -->
+               <div class="modal-carousel">
+                    <div class="carousel-wrapper">
+                         <app-lazy-image [src]="currentDisplayImage"
+                                         [alt]="selectedProject.title"
+                                         class="carousel-image">
+                         </app-lazy-image>
+
+                         <div class="carousel-controls"
+                              *ngIf="selectedProject.gallery && selectedProject.gallery.length > 1">
+                              <button class="carousel-btn prev"
+                                      (click)="prevImage()">
+                                   <i class="bi bi-chevron-left"></i>
+                              </button>
+                              <button class="carousel-btn next"
+                                      (click)="nextImage()">
+                                   <i class="bi bi-chevron-right"></i>
+                              </button>
+                         </div>
+
+                         <div class="carousel-indicators"
+                              *ngIf="selectedProject.gallery && selectedProject.gallery.length > 1">
+                              <span *ngFor="let img of selectedProject.gallery; let i = index"
+                                    [class.active]="i === currentImageIndex"
+                                    (click)="currentImageIndex = i"></span>
+                         </div>
+                    </div>
+               </div>
+
+               <!-- Right Side: Details -->
+               <div class="modal-details">
+                    <h2 class="modal-title">{{ selectedProject.title }}</h2>
+                    <span class="modal-category">{{ selectedProject.category }}</span>
+
+                    <div class="details-list">
+                         <div class="detail-item">
+                              <div class="label"><i class="bi bi-geo-alt-fill"></i> Location</div>
+                              <div class="value">{{ selectedProject.location || 'N/A' }}</div>
+                         </div>
+
+                         <div class="detail-item">
+                              <div class="label"><i class="bi bi-calendar-event"></i> Date</div>
+                              <div class="value">{{ selectedProject.date || 'N/A' }}</div>
+                         </div>
+
+                         <div class="detail-item">
+                              <div class="label"><i class="bi bi-person-circle"></i> Client</div>
+                              <div class="value">{{ selectedProject.clientName || 'N/A' }}</div>
+                         </div>
+
+                         <div class="detail-item">
+                              <div class="label"><i class="bi bi-box-seam"></i> Package</div>
+                              <div class="value">{{ selectedProject.package || 'Custom Package' }}</div>
+                         </div>
+                    </div>
+
+                    <div class="description-section">
+                         <h4>About the Event</h4>
+                         <p>{{ selectedProject.description }}</p>
+                    </div>
+
+                    <div class="social-links"
+                         *ngIf="selectedProject.facebookLink">
+                         <a [href]="selectedProject.facebookLink"
+                            target="_blank"
+                            class="fb-link">
+                              <i class="bi bi-facebook"></i> View on Facebook
+                         </a>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>

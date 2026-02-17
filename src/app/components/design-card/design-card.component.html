@@ -1,0 +1,35 @@
+<div class="card-container">
+     <div class="image-wrapper">
+          <app-lazy-image [src]="item.src"
+                          [alt]="item.alt">
+          </app-lazy-image>
+          <div class="overlay"></div>
+     </div>
+
+     <div class="content">
+          <div class="header">
+               <h3 class="title">{{ item.designCode }}</h3>
+               <div class="info-row">
+                    <span class="category"
+                          [class.gold]="item.category === 'Gold'"
+                          [class.silver]="item.category === 'Silver'">{{ item.category }}</span>
+                    <span class="tag-chip"
+                          *ngIf="item.tag">{{ item.tag }}</span>
+                    <span class="client-count">
+                         <i class="bi bi-people-fill"></i> {{ item.clientCount }} Used
+                    </span>
+               </div>
+          </div>
+
+          <div class="description">
+               <p>{{ item.alt }}</p>
+          </div>
+
+          <div class="actions">
+               <button class="btn-main"
+                       (click)="onView()">
+                    View Design
+               </button>
+          </div>
+     </div>
+</div>

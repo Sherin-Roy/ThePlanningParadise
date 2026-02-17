@@ -1,0 +1,44 @@
+<footer class="footer">
+     <div class="container">
+          <div class="footer-grid">
+               <div class="footer-brand">
+                    <h3 class="logo-text">The Planning <span class="highlight">Paradise</span></h3>
+                    <p>Bringing people together through celebration & culture. We design your dreams into unforgettable realities.</p>
+                    <div class="social-links">
+                         <a href="https://instagram.com"
+                            target="_blank"
+                            aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                         <a href="https://facebook.com"
+                            target="_blank"
+                            aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                         <a [href]="'mailto:' + env.contact.email"
+                            aria-label="Email"><i class="bi bi-envelope"></i></a>
+                    </div>
+               </div>
+
+               <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                         <li><a routerLink="/">Home</a></li>
+                         <li><a routerLink="/about">About Us</a></li>
+                         <li><a routerLink="/portfolio">Our Projects</a></li>
+                         <li><a routerLink="/gallery">Gallery</a></li>
+                         <li><a routerLink="/team">Team</a></li>
+                         <li><a routerLink="/contact">Contact</a></li>
+                    </ul>
+               </div>
+
+               <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="bi bi-geo-alt"></i> Services Available Anywhere in Kerala, India</p>
+                    <p><i class="bi bi-whatsapp"></i> <a [href]="'https://wa.me/' + env.whatsapp.phoneNumber"
+                            target="_blank">+{{ env.whatsapp.phoneNumber }}</a></p>
+                    <p><i class="bi bi-envelope"></i> {{ env.contact.email }}</p>
+               </div>
+          </div>
+
+          <div class="footer-bottom">
+               <p>&copy; {{ currentYear }} The Planning Paradise. All Rights Reserved.</p>
+          </div>
+     </div>
+</footer>

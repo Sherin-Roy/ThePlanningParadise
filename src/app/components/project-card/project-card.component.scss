@@ -1,0 +1,176 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.project-card {
+     background: $white;
+     border-radius: 40px;
+     padding: 10px; // Reduced padding
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+     transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     cursor: pointer;
+     position: relative;
+     border: 1px solid rgba(0, 0, 0, 0.03);
+
+     .image-wrapper {
+          width: 100%;
+          height: 280px; // Kept original height
+          border-radius: 32px;
+          overflow: hidden;
+          position: relative;
+          flex-shrink: 0;
+
+          // Fix for flickering corners in WebKit browsers
+          -webkit-mask-image: -webkit-radial-gradient(white, black);
+          mask-image: radial-gradient(white, black);
+          backface-visibility: hidden;
+          transform: translateZ(0);
+
+          img {
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+               transition: transform 0.8s cubic-bezier(0.2, 1, 0.2, 1);
+          }
+     }
+
+     .content {
+          padding: 16px 12px 12px; // Reduced padding
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          min-width: 0; // Necessary for ellipsis in nested flex/grid
+
+          .header {
+               margin-bottom: 15px;
+               min-width: 0;
+
+               .title {
+                    color: $primary-dark;
+                    font-size: 1.4rem; // Slightly reduced font size
+                    font-weight: 800;
+                    margin-bottom: 8px;
+                    font-family: $font-heading;
+                    letter-spacing: -0.5px;
+                    line-height: 1.2;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+               }
+
+               .category {
+                    display: inline-block;
+                    background: rgba($secondary, 0.15); // Light gold background
+                    color: darken($secondary, 10%); // Slightly darker text for contrast
+                    padding: 4px 12px;
+                    border-radius: 12px;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    border: 1px solid rgba($secondary, 0.2);
+                    flex-shrink: 0; // Prevent category from being squeezed
+               }
+
+               .location {
+                    display: flex;
+                    align-items: flex-start; // Align with top for multi-line
+                    gap: 4px;
+                    color: $text-main;
+                    font-weight: 600;
+                    font-size: 0.85rem;
+                    min-width: 0; // Necessary for ellipsis
+                    line-height: 1.3;
+
+                    i {
+                         color: $primary;
+                         font-size: 0.95rem;
+                         flex-shrink: 0;
+                         margin-top: 2px; // Visual alignment with first line
+                    }
+
+                    .loc-text {
+                         display: -webkit-box;
+                         -webkit-line-clamp: 2;
+                         line-clamp: 2;
+                         -webkit-box-orient: vertical;
+                         overflow: hidden;
+                         overflow-wrap: anywhere;
+                         text-align: right; // Align text to right as it's on the right side of the card
+                    }
+               }
+
+               .info-row {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start; // Align top for multi-row wrap
+                    width: 100%;
+                    gap: 12px;
+                    min-width: 0;
+               }
+          }
+
+          .actions {
+               margin-top: auto;
+               display: flex;
+               gap: 10px;
+               align-items: center;
+
+               .btn-main {
+                    flex-grow: 1;
+                    background: $gradient-main;
+                    color: $white;
+                    border: none;
+                    padding: 12px 20px; // Reduced padding
+                    border-radius: 30px;
+                    font-weight: 700;
+                    font-size: 0.95rem;
+                    transition: all 0.3s ease;
+                    text-align: center;
+                    box-shadow: 0 4px 15px rgba($primary, 0.2);
+
+                    &:hover {
+                         background: $primary;
+                         transform: translateY(-2px);
+                         box-shadow: 0 6px 20px rgba($primary, 0.4);
+                    }
+               }
+
+               .btn-icon {
+                    width: 48px; // Reduced size
+                    height: 48px;
+                    border-radius: 50%;
+                    border: 1px solid #f0f0f0;
+                    background: transparent;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: $secondary;
+                    transition: all 0.3s ease;
+                    font-size: 1.1rem;
+
+                    &:hover {
+                         background: rgba($secondary, 0.05);
+                         border-color: $secondary;
+                         transform: scale(1.1);
+                    }
+               }
+          }
+     }
+
+     // Global card hover
+     &:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 40px rgba($primary, 0.1);
+
+          .image-wrapper img {
+               transform: scale(1.1);
+          }
+
+          .content .title {
+               color: $primary;
+          }
+     }
+}

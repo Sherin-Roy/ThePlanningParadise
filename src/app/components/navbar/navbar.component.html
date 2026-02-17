@@ -1,0 +1,42 @@
+<nav [class.menu-open]="isMenuOpen">
+        <div class="container">
+                <div class="nav-content">
+                        <a routerLink="/"
+                           class="logo">
+                                <span class="logo-text">The Planning <span class="highlight">Paradise</span></span>
+                        </a>
+
+                        <button class="menu-toggle"
+                                (click)="toggleMenu()"
+                                aria-label="Toggle navigation">
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                                <span class="bar"></span>
+                        </button>
+
+                        <ul class="nav-links"
+                            [class.active]="isMenuOpen">
+                                <li><a routerLink="/"
+                                           routerLinkActive="active"
+                                           [routerLinkActiveOptions]="{exact: true}"
+                                           (click)="closeMenu()">Home</a></li>
+                                <li><a routerLink="/about"
+                                           routerLinkActive="active"
+                                           (click)="closeMenu()">About Us</a></li>
+                                <li><a routerLink="/portfolio"
+                                           routerLinkActive="active"
+                                           (click)="closeMenu()">Our Projects</a></li>
+                                <li><a routerLink="/gallery"
+                                           routerLinkActive="active"
+                                           (click)="closeMenu()">Gallery</a></li>
+                                <li><a routerLink="/team"
+                                           routerLinkActive="active"
+                                           (click)="closeMenu()">Team</a></li>
+                                <li><a routerLink="/contact"
+                                           routerLinkActive="active"
+                                           class="btn-contact"
+                                           (click)="closeMenu()">Contact</a></li>
+                        </ul>
+                </div>
+        </div>
+</nav>

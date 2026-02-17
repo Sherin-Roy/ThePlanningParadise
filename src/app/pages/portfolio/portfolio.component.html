@@ -1,0 +1,162 @@
+<app-hero title="Our Projects"
+          subtitle="Exploring our portfolio of unforgettable events."
+          backgroundImage="assets/images/hero/portfolio-backdrop.jpeg">
+</app-hero>
+
+<section class="section-padding">
+     <div class="container">
+          <!-- Filter Buttons -->
+          <div class="filters text-center mb-5">
+               <button *ngFor="let cat of categories"
+                       class="filter-btn"
+                       [class.active]="activeCategory === cat"
+                       (click)="filterProjects(cat)">
+                    {{ cat }}
+               </button>
+          </div>
+
+          <!-- Category Header -->
+          <div class="category-header mb-5 animate-fade-up">
+               <div class="header-info-wrapper">
+                    <div class="header-text">
+                         <h2 class="category-title">{{ currentCategoryTitle }}</h2>
+                         <p class="category-subtitle">{{ currentCategorySubtitle }}</p>
+                    </div>
+                    <div class="header-stats">
+                         <div class="stat-item animate-float">
+                              <span class="stat-value">{{ filteredProjects.length }}</span>
+                              <span class="stat-label">Total Listed Projects</span>
+                         </div>
+                    </div>
+               </div>
+          </div>
+
+          <!-- Grid -->
+          <div class="projects-grid">
+               <app-project-card *ngFor="let project of pagedProjects"
+                                 [project]="project"
+                                 (viewDetails)="openModal(project)"
+                                 class="animate-fade-up">
+               </app-project-card>
+          </div>
+
+          <!-- Empty State -->
+          <div *ngIf="filteredProjects.length === 0"
+               class="text-center mt-5">
+               <p class="text-muted">No projects found in this category yet.</p>
+          </div>
+
+          <!-- Pagination Bar -->
+          <div class="pagination-bar"
+               *ngIf="totalPages > 1">
+               <div class="pagination-info">
+                    Showing {{ (currentPage - 1) * pageSize + 1 }} -
+                    {{ (currentPage * pageSize) > filteredProjects.length ? filteredProjects.length : (currentPage * pageSize) }}
+                    of {{ filteredProjects.length }} projects
+               </div>
+               <div class="pagination-controls">
+                    <button [disabled]="currentPage === 1"
+                            (click)="changePage(currentPage - 1)"
+                            class="page-btn nav-btn">
+                         <i class="bi bi-chevron-left"></i>
+                    </button>
+
+                    <span class="page-numbers">
+                         Page {{ currentPage }} of {{ totalPages }}
+                    </span>
+
+                    <button [disabled]="currentPage === totalPages"
+                            (click)="changePage(currentPage + 1)"
+                            class="page-btn nav-btn">
+                         <i class="bi bi-chevron-right"></i>
+                    </button>
+               </div>
+          </div>
+     </div>
+</section>
+
+<!-- Project Details Modal -->
+<div class="modal-overlay"
+     *ngIf="selectedProject"
+     (click)="closeModal()">
+     <div class="modal-content"
+          (click)="$event.stopPropagation()">
+          <button class="close-modal-btn"
+                  (click)="closeModal()">
+               <i class="bi bi-x-lg"></i>
+          </button>
+
+          <div class="modal-body-grid">
+               <!-- Left Side: Carousel -->
+               <div class="modal-carousel">
+                    <div class="carousel-wrapper">
+                         <app-lazy-image [src]="currentDisplayImage"
+                                         [alt]="selectedProject.title"
+                                         class="carousel-image">
+                         </app-lazy-image>
+
+                         <div class="carousel-controls"
+                              *ngIf="selectedProject.gallery && selectedProject.gallery.length > 1">
+                              <button class="carousel-btn prev"
+                                      (click)="prevImage()">
+                                   <i class="bi bi-chevron-left"></i>
+                              </button>
+                              <button class="carousel-btn next"
+                                      (click)="nextImage()">
+                                   <i class="bi bi-chevron-right"></i>
+                              </button>
+                         </div>
+
+                         <div class="carousel-indicators"
+                              *ngIf="selectedProject.gallery && selectedProject.gallery.length > 1">
+                              <span *ngFor="let img of selectedProject.gallery; let i = index"
+                                    [class.active]="i === currentImageIndex"
+                                    (click)="currentImageIndex = i"></span>
+                         </div>
+                    </div>
+               </div>
+
+               <!-- Right Side: Details -->
+               <div class="modal-details">
+                    <h2 class="modal-title">{{ selectedProject.title }}</h2>
+                    <span class="modal-category">{{ selectedProject.category }}</span>
+
+                    <div class="details-list">
+                         <div class="detail-item">
+                              <div class="label"><i class="bi bi-geo-alt-fill"></i> Location</div>
+                              <div class="value">{{ selectedProject.location || 'N/A' }}</div>
+                         </div>
+
+                         <div class="detail-item">
+                              <div class="label"><i class="bi bi-calendar-event"></i> Date</div>
+                              <div class="value">{{ selectedProject.date || 'N/A' }}</div>
+                         </div>
+
+                         <div class="detail-item">
+                              <div class="label"><i class="bi bi-person-circle"></i> Client</div>
+                              <div class="value">{{ selectedProject.clientName || 'N/A' }}</div>
+                         </div>
+
+                         <div class="detail-item">
+                              <div class="label"><i class="bi bi-box-seam"></i> Package</div>
+                              <div class="value">{{ selectedProject.package || 'Custom Package' }}</div>
+                         </div>
+                    </div>
+
+                    <div class="description-section">
+                         <h4>About the Event</h4>
+                         <p>{{ selectedProject.description }}</p>
+                    </div>
+
+                    <div class="social-links"
+                         *ngIf="selectedProject.facebookLink">
+                         <a [href]="selectedProject.facebookLink"
+                            target="_blank"
+                            class="fb-link">
+                              <i class="bi bi-facebook"></i> View on Facebook
+                         </a>
+                    </div>
+               </div>
+          </div>
+     </div>
+</div>
