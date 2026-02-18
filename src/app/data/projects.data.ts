@@ -335,6 +335,26 @@ export const PROJECTS: Project[] = [
           ]
      },
      {
+          id: 1018,
+          title: "Mudiyannurkara Engagement",
+          category: "Engagement",
+          image: "assets/images/projects/1018/1018_1.jpg",
+          description: "A refined engagement celebration featuring artistic décor and a stylish ceremonial backdrop.",
+          date: "2026-01-15",
+          location: "Mudiyannurkara, Kottayam",
+          clientName: "Asha & Anool",
+          package: "Gold",
+          facebookLink: "https://www.facebook.com/share/v/1AbDg9CZx4/",
+          gallery: [
+               "assets/images/projects/1018/1018_1.jpg",
+               "assets/images/projects/1018/1018_2.jpg",
+               "assets/images/projects/1018/1018_3.jpg",
+               "assets/images/projects/1018/1018_4.jpg",
+               "assets/images/projects/1018/1018_5.jpg",
+               "assets/images/projects/1018/1018_6.jpg",
+          ]
+     },
+     {
           id: 1019,
           title: "Kappadu Wedding – Jan 31",
           category: "Wedding",
