@@ -53,10 +53,6 @@
                     <app-project-card *ngFor="let project of featuredProjects"
                                       [project]="project"
                                       (viewDetails)="openModal(project)"></app-project-card>
-                    <!-- Duplicate for seamless loop -->
-                    <app-project-card *ngFor="let project of featuredProjects"
-                                      [project]="project"
-                                      (viewDetails)="openModal(project)"></app-project-card>
                </div>
           </div>
 

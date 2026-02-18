@@ -35,7 +35,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   private carouselInterval: any;
 
   ngOnInit() {
-    this.featuredProjects = PROJECTS.slice(0, 4);
+    // Select 8 high-quality and diverse projects for the home page
+    const featuredIds = [1012, 1013, 1021, 1008, 1005, 1011, 1016, 1020];
+    this.featuredProjects = PROJECTS.filter(p => featuredIds.includes(p.id));
+
+    // Fallback if filter doesn't return enough (e.g. data changes)
+    if (this.featuredProjects.length < 8) {
+      this.featuredProjects = PROJECTS.slice(0, 8);
+    }
   }
 
   ngOnDestroy() {
