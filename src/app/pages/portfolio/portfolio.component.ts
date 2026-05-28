@@ -24,7 +24,8 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     "Engagement",
     "Baptism",
     "Hindhu Traditional Wedding",
-    "Naming Ceremony"
+    "Naming Ceremony",
+    "Wedding Reception"
   ];
   activeCategory: string = 'All';
 
@@ -52,6 +53,10 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     'Naming Ceremony': {
       title: 'Little Blessings',
       subtitle: 'Heartwarming ceremonies welcoming new beginnings with love.'
+    },
+    'Wedding Reception': {
+      title: 'Grand Receptions',
+      subtitle: 'Spectacular wedding receptions celebrating the newlywed couple.'
     }
   };
 
