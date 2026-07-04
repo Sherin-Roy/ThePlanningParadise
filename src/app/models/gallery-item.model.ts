@@ -7,4 +7,6 @@ export interface GalleryItem {
      clientCount: number;
      tag?: string;
      gallery?: string[];
+     about?: string;
+     description?: string;
 }

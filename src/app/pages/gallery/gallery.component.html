@@ -136,13 +136,13 @@
                          </div>
                          <div class="detail-item">
                               <div class="label"><i class="bi bi-info-circle"></i> Description</div>
-                              <div class="value">{{ selectedItem.alt }}</div>
+                              <div class="value">{{ selectedItem.description || selectedItem.alt }}</div>
                          </div>
                     </div>
 
                     <div class="description-section">
                          <h4>About this Design</h4>
-                         <p>This stunning {{ selectedItem.category }} package design features {{ selectedItem.alt | lowercase }}. Perfect for creating an unforgettable atmosphere for your special day.</p>
+                         <p>{{ selectedItem.about || ('This stunning ' + selectedItem.category + ' package design features ' + (selectedItem.alt | lowercase) + '. Perfect for creating an unforgettable atmosphere for your special day.') }}</p>
                     </div>
 
                     <div class="action-section">
